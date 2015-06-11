@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title Websocket Test
+    link(rel="stylesheet" href="css/style.css")
+  body
+
+    section.container
+      header.page-header
+        a(href="/")
+          h1 Websocket Test
+        p Exemplos de uso de websocket com Socket.io
+      include includes/menu.jade
+      
+      main
+        block content
+
+      footer.text-center
+        | &copy; Alessandro Sales | Webdeveloper
+    script(src="js/dependencias.min.js")
+    script(src="js/main.min.js")

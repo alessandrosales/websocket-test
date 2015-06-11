@@ -1,0 +1,21 @@
+{
+  "name": "websocket-test",
+  "version": "1.0.0",
+  "authors": [
+    "Alessandro Sales <contato@alessandrosales.com.br>"
+  ],
+  "description": "App exemplo para teste de Websocket",
+  "license": "MIT",
+  "homepage": "http://alessandrosales.com.br",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.4"
+  }
+}
