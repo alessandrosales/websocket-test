@@ -1,5 +1,11 @@
 var socket = io();
 
+socket.on('conectado', function(msg){
+  var p = $('<p>').html($('<b>').html(msg)).addClass('item');
+  $('.box-message').append(p);
+  scrollBottom();
+})
+
 socket.on('window keypress', function(ip){
   if(!$('#panel-chat').find('.panel-heading').find('span').length){
 

@@ -22,6 +22,7 @@ app.get('/geolocazacao', function(req, res){
 
 io.on('connection', function(socket){
   console.log('Novo usuário conectado!');
+  io.emit('conectado', 'Novo usuário conectado!');
 
   socket.on('chat mensagem', function(msg){
     var ip = socket.request.socket.remoteAddress;
