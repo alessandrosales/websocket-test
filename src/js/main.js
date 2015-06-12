@@ -4,7 +4,13 @@ socket.on('conectado', function(msg){
   var p = $('<p>').html($('<b>').html(msg)).addClass('item');
   $('.box-message').append(p);
   scrollBottom();
-})
+});
+
+socket.on('desconectado', function(msg){
+  var p = $('<p>').html($('<b>').html(msg)).addClass('item');
+  $('.box-message').append(p);
+  scrollBottom();
+});
 
 socket.on('window keypress', function(ip){
   if(!$('#panel-chat').find('.panel-heading').find('span').length){
@@ -27,7 +33,7 @@ socket.on('chat mensagem', function(msg, ip){
   var curr_min = d.getMinutes();
   var curr_sec = d.getSeconds();
 
-  data = curr_hour+':'+curr_min+':'+curr_sec;
+  var data = curr_hour+':'+curr_min+':'+curr_sec;
 
   var small = $('<small>').html('enviado: '+data+ip);
   var p = $('<p>').html($('<b>').html(msg)).prepend($('<div>').append(small)).addClass('item');
