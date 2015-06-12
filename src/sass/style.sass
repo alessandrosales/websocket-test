@@ -2,5 +2,57 @@
 @import ../../lib/bootstrap-sass-official/assets/stylesheets/bootstrap
 @import bootswatch 
 
+@media (max-width: $screen-xs-max)
+  h1
+    font-size: 30px
+    margin-top: 5px !important
+    margin-bottom: 0px !important
+  h2
+    font-size: 25px
+
+  header.page-header
+    p
+      display: none
+  .page-header
+    margin: 0
+    p
+      margin-bottom: 0
+  .box-message
+    min-height: 200px
+    max-height: 200px
+
+  footer
+    display: none
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+  .box-message
+    min-height: 300px
+    max-height: 300px
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+  .box-message
+    min-height: 500px
+    max-height: 500px
+
+@media (min-width: $screen-lg-min)
+  .box-message
+    min-height: 500px
+    max-height: 500px
+
 main
   margin-top: 20px
+
+.panel-body.container-messages
+  padding: 0 !important
+
+.box-message
+  padding: 0px
+  overflow: scroll
+
+  .item
+    padding: 5px 10px
+  .item:nth-child(odd)
+  .item:nth-child(even)
+    background: #F5F5F5
+    text-align: right
+  

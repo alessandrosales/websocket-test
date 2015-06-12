@@ -1,0 +1,14 @@
+extends tpl.jade
+
+block content
+  .panel#panel-chat.panel-default.text-left
+    .panel-heading Exemplo 1 - Chat
+    .panel-body.container-messages
+      .box-message
+    .panel-footer
+      form.form(action="javascript:chatSubmit()")
+        .form-group
+          .input-group
+            input.form-control(type='text' name="mensagem" placeholder="Digite sua mensagem")
+            span.input-group-btn
+              input#button-chat.btn.btn-primary(type='submit' value="Enviar" required)
