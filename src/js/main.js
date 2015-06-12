@@ -1,14 +1,17 @@
 var socket = io();
 
 socket.on('conectado', function(msg){
-  var p = $('<p>').html($('<b>').html(msg)).addClass('item');
-  $('.box-message').append(p);
+  novaMensagemSimples(msg);
   scrollBottom();
 });
 
 socket.on('desconectado', function(msg){
-  var p = $('<p>').html($('<b>').html(msg)).addClass('item');
-  $('.box-message').append(p);
+  novaMensagemSimples(msg);
+  scrollBottom();
+});
+
+socket.on('chat mensagem', function(msg, ip){
+  novaMensagemUsuario(msg, ip);
   scrollBottom();
 });
 
@@ -24,22 +27,23 @@ socket.on('window keypress', function(ip){
   }
 });
 
-socket.on('chat mensagem', function(msg, ip){
+function novaMensagemSimples(msg){
+  var p = $('<p>').html($('<b>').html(msg)).addClass('item');
+  $('.box-message').append(p);
+}
+
+function novaMensagemUsuario(msg, ip){
 
   ip = (ip != null && ip != undefined && ip != '' ? ' - '+ip : '');
 
   var d = new Date();
-  var curr_hour = d.getHours();
-  var curr_min = d.getMinutes();
-  var curr_sec = d.getSeconds();
 
-  var data = curr_hour+':'+curr_min+':'+curr_sec;
+  var data = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
 
   var small = $('<small>').html('enviado: '+data+ip);
   var p = $('<p>').html($('<b>').html(msg)).prepend($('<div>').append(small)).addClass('item');
   $('.box-message').append(p);
-  scrollBottom();
-});
+}
 
 function scrollBottom(){
   $('.box-message').animate({"scrollTop": $('.box-message')[0].scrollHeight}, "slow");
@@ -51,10 +55,10 @@ function chatSubmit(){
 
   if(!mensagem.length) return false;
 
-  $('input[name=mensagem]').val('');
-  $('input[name=mensagem]').focus();
+  $('input[name=mensagem]').val('').focus();
 
   socket.emit('chat mensagem', mensagem);
+
   return false;
 }
 
