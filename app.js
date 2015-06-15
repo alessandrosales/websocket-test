@@ -20,7 +20,7 @@ app.get('/chat', function(req, res){
   res.render('exemplo1');
 });
 
-app.get('/geolocazacao', function(req, res){
+app.get('/geolocalizacao', function(req, res){
   res.render('exemplo2');
 });
 
