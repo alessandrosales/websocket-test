@@ -9,6 +9,7 @@ app.enable('trust proxy');
 app.set('view engine', 'jade');
 app.set('views', process.cwd()+'/views');
 app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/lib'));
 
 //Rotas
 app.get('/', function(req, res){
@@ -33,7 +34,7 @@ io.on('connection', function(socket){
   //Emite uma mensagem para todos os clientes conectados
   socket.on('chat mensagem', function(msg){
     var ip = socket.request.socket.remoteAddress;
-    var ip = ip != undefined ? String(ip).substring(7, 30) : null;
+    var ip = ip !== undefined ? String(ip).substring(7, 30) : null;
 
     console.log('mensagem: '+msg);
     io.emit('chat mensagem', msg, ip);
@@ -42,10 +43,19 @@ io.on('connection', function(socket){
   //Emite a informação que alguém está digitando uma mensagem
   socket.on('window keypress', function(){
     var ip = socket.request.socket.remoteAddress;
-    var ip = ip != undefined ? String(ip).substring(7, 30) : null;
+    var ip = ip !== undefined ? String(ip).substring(7, 30) : null;
 
     console.log('window keypress');
     io.emit('window keypress', ip);
+  });
+
+  socket.on('set endereco', function(op){
+    var ip = socket.request.socket.remoteAddress;
+    var ip = ip !== undefined ? String(ip).substring(7, 30) : null;
+
+    console.log('set endereco: '+op);
+    io.emit('set endereco', op, ip);
+
   });
 
   //Emite a informação que um usuário se desconectou do chat

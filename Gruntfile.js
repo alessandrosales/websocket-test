@@ -23,7 +23,8 @@ module.exports = function(grunt) {
         files: {
           'assets/js/dependencias.min.js': [
             'lib/jquery/dist/jquery.min.js',
-            'lib/bootstrap-sass-official/assets/javascripts/bootstrap.min.js'
+            'lib/bootstrap-sass-official/assets/javascripts/bootstrap.min.js',
+            'lib/bootbox/bootbox.js'
           ],
           'assets/js/main.min.js': ['src/js/main.js']
         }

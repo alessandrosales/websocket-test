@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass-official": "~3.3.4"
+    "bootstrap-sass-official": "~3.3.4",
+    "leaflet": "~0.7.3",
+    "bootbox": "~4.4.0"
   }
 }
